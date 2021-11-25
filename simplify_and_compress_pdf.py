@@ -39,6 +39,8 @@ def main():
     
     # Select files with EasyGui window:
     files = easygui.fileopenbox("Select files to simplify", "PDF simplify", filetypes= "*.pdf", multiple=True)
+    
+    # Select image resolution with EasyGui input window:
     dpi = easygui.enterbox("Enter desired DPI resolution of pdf-internal images.\n\n250 DPI is the normal resolution for good compression and still good readability.", "PDF simplify - DPI input", "250")
     print('---')
     
