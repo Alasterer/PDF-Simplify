@@ -39,6 +39,7 @@ def main():
     
     # Select files with EasyGui window:
     files = easygui.fileopenbox("Select files to simplify", "PDF simplify", filetypes= "*.pdf", multiple=True)
+    dpi = easygui.enterbox("Enter desired DPI resolution of pdf-internal images.\n\n250 DPI is the normal resolution for good compression and still good readability.", "PDF simplify - DPI input", "250")
     print('---')
     
     for f in files:
@@ -67,7 +68,7 @@ def main():
                 
                 # 3.1.2. Convert .ps file back to .pdf
                 gs = 'gswin32c' if (sys.platform == 'win32') else 'gs'
-                command_output = subprocess.run([gs, '-sDEVICE=pdfwrite', '-dCompatibilityLevel=1.4', '-dDownsampleColorImages=true', '-dColorImageResolution=250', '-dNOPAUSE', '-dBATCH', '-sOutputFile=' + output_filename, ps_filename], capture_output = True).stdout.decode()
+                command_output = subprocess.run([gs, '-sDEVICE=pdfwrite', '-dCompatibilityLevel=1.4', '-dDownsampleColorImages=true', '-dColorImageResolution='+dpi, '-dNOPAUSE', '-dBATCH', '-sOutputFile=' + output_filename, ps_filename], capture_output = True).stdout.decode()
                 # gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution=250 -dNOPAUSE -dBATCH -sOutputFile=output_250dpi.pdf output_pdftops.ps
                 #print(command_output)
                 
