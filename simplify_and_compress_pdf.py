@@ -25,11 +25,14 @@ def translate_string_from_de_to_en(orig_string):
     TYPE
         String with some characters changed:
             * 'ä' --> 'ae'
+            * 'Ä' --> 'Ae' 
             * 'ü' --> 'ue'
+            * 'Ü' --> 'Ue'
             * 'ö' --> 'oe'
+            * 'Ö' --> 'Oe'
             * 'ß' --> 'ss'
     '''
-    special_char_map = {ord('ä'):'ae', ord('ü'):'ue', ord('ö'):'oe', ord('ß'):'ss'}
+    special_char_map = {ord('ä'):'ae', ord('Ä'):'Ae', ord('ü'):'ue', ord('Ü'):'Ue', ord('ö'):'oe', ord('O'):'Oe', ord('ß'):'ss'}
     return orig_string.translate(special_char_map)
 
 
